@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
+ * 入口类
  * @author AlanP
  * @Date 2017/8/21
  */
@@ -34,6 +35,7 @@ public class MyApplication {
     }
 
     public static void main(String[] args){
+        //启动Spring Boot应用项目
         SpringApplication.run(MyApplication.class,args);
     }
 
