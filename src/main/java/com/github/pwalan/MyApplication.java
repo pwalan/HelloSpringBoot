@@ -1,5 +1,7 @@
 package com.github.pwalan;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class MyApplication {
 
+    @Value("${book.name}")
+    private String bookName;
+    @Value("${book.learner}")
+    private String bookLearner;
+
+    @Autowired
+    private LearnerSettings learner;
+
     @RequestMapping("/")
     String index(){
-        return "Hello Spring Boot";
+        String msg="";
+        msg+="Welcome to <i>"+bookName+"</i>, "+bookLearner+"!";
+        msg+="<br><br>";
+        msg+="Learner name is "+learner.getName()+", and age is "+learner.getAge();
+        return msg;
     }
 
     public static void main(String[] args){
