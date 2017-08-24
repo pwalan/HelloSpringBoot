@@ -5,8 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -14,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author AlanP
  * @Date 2017/8/21
  */
-@RestController
+@Controller
 @SpringBootApplication
 public class MyApplication {
 
@@ -27,12 +32,26 @@ public class MyApplication {
     private LearnerSettings learner;
 
     @RequestMapping("/")
-    String index(){
-        String msg="";
+    public String index(Model model){
+        //直接显示消息
+        /*String msg="";
         msg+="Welcome to <i>"+bookName+"</i>, "+bookLearner+"!";
         msg+="<br><br>";
         msg+="Learner name is "+learner.getName()+", and age is "+learner.getAge();
-        return msg;
+        return msg;*/
+
+        //返回页面，并附上数据
+        Person single = new Person("pw",23);
+
+        List<Person> people=new ArrayList<Person>();
+        people.add(new Person("xx",11));
+        people.add(new Person("yy",22));
+        people.add(new Person("zz",33));
+
+        model.addAttribute("singlePerson", single);
+        model.addAttribute("people", people);
+
+        return "index";
     }
 
     public static void main(String[] args){
