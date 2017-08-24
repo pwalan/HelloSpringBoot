@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Welcome</title>
+</head>
+
+<body>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>访问model</h3>
+    </div>
+    <div class="panel-body">
+        <span th:text="${singlePerson.name}"></span>
+    </div>
+</div>
+
+<div th:if="${not #lists.isEmpty(people)}">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h3 class="panel-title">列表</h3>
+        </div>
+        <div class="list-group">
+            <ul class="list-group">
+                <li class="list-group-item" th:each="person:${people}">
+                    <span th:text="${person.name}"></span>
+                    <span th:text="${person.age}"></span>
+                    <button class="btn btn-info" th:onclick="'getName(\''+${person.name}+'\');'">获得名字</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    var single=[[${singlePerson}]];
+    console.log(single.name+"/"+single.age);
+
+    function getName(name){
+        alert(name);
+        console.log(name)
+    }
+</script>
+
+</body>
+</html>
