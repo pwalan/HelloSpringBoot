@@ -1,4 +1,10 @@
-com\github\pwalan\Person.class
-com\github\pwalan\MyApplication$1.class
+com\github\pwalan\websocket\WiselyMessage.class
+com\github\pwalan\websocket\WebSecurityConfig.class
+com\github\pwalan\WebMvcConfig.class
 com\github\pwalan\config\LearnerSettings.class
 com\github\pwalan\MyApplication.class
+com\github\pwalan\websocket\WiselyResponse.class
+com\github\pwalan\websocket\WebSocketConfig.class
+com\github\pwalan\Person.class
+com\github\pwalan\MyApplication$1.class
+com\github\pwalan\websocket\WsController.class

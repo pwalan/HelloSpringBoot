@@ -82,7 +82,6 @@ public class MyApplication {
         };
         tomcat.addAdditionalTomcatConnectors(httpConnector());
         return tomcat;
-
     }
 
     @Bean
@@ -93,7 +92,6 @@ public class MyApplication {
         connector.setSecure(false);
         connector.setRedirectPort(port);
         return connector;
-
     }
 
 }
