@@ -4,6 +4,7 @@
 </head>
 <body onload="disconnect()">
 <noscript><h2 style="color: #ff0000">貌似你的浏览器不支持websocket</h2></noscript>
+<nav th:include="common/navbar :: navbar('ws')"></nav>
 <div>
     <div>
         <button id="connect" onclick="connect();" class="btn btn-primary">连接</button>

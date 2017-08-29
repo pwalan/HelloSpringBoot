@@ -2,8 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8" />
-<head>
-    <title>聊天室</title>
+<head th:include="common/common_head :: commonHeader('聊天室')">
 </head>
 
 <script th:src="@{sockjs.min.js}"></script>
@@ -11,6 +10,7 @@
 <script th:src="@{jquery.js}"></script>
 
 <body>
+<nav th:include="common/navbar :: navbar('chat')"></nav>
 <p>
     聊天室
 </p>
@@ -43,6 +43,8 @@
         stomp.send("/chat", {}, text);//3
     }
     $('#stop').click(function() {sock.close()});
+
+
 </script>
 
 <div id="output"></div>
