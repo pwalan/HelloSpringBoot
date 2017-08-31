@@ -1,6 +1,9 @@
 package com.github.pwalan;
 
 import com.github.pwalan.config.LearnerSettings;
+import com.github.pwalan.mysql.dao.PersonRepository;
+import com.github.pwalan.mysql.support.CustomRepositoryFactoryBean;
+
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
@@ -12,10 +15,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,7 @@ import java.util.List;
  */
 @Controller
 @SpringBootApplication
+@EnableJpaRepositories(repositoryFactoryBeanClass = CustomRepositoryFactoryBean.class)
 public class MyApplication {
 
     @Value("${book.name}")
@@ -38,6 +42,9 @@ public class MyApplication {
 
     @Autowired
     private LearnerSettings learner;
+
+    @Autowired
+    PersonRepository personRepository;
 
     @RequestMapping("/")
     public String index(Model model){
