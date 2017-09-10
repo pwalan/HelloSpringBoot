@@ -3,6 +3,7 @@ package com.github.pwalan.mysql.web;
 import com.github.pwalan.mysql.dao.PersonRepository;
 import com.github.pwalan.mysql.domain.Person;
 
+import com.github.pwalan.mysql.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +20,9 @@ public class DataController {
     //Spring Data JPA已自动为你注册bean，所以可自动注入
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    DemoService demoService;
 
     /**
      * 保存
@@ -105,7 +109,7 @@ public class DataController {
      * 测试分页
      */
     @RequestMapping("/page")
-    public Page<Person> page(int p,int size) {
+    public Page<Person> page(int p, int size) {
 
         Page<Person> pagePeople = personRepository.findAll(new PageRequest(p, size));
 
@@ -122,6 +126,29 @@ public class DataController {
         Page<Person> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
 
         return pagePeople;
+
+    }
+
+    /**
+     * 测试回滚
+     * @param person
+     * @return
+     */
+    @RequestMapping("/rollback")
+    public Person rollback(Person person) {
+
+        return demoService.savePersonWithRollBack(person);
+    }
+
+    /**
+     * 测试不回滚
+     * @param person
+     * @return
+     */
+    @RequestMapping("/norollback")
+    public Person noRollback(Person person) {
+
+        return demoService.savePersonWithoutRollBack(person);
 
     }
 
