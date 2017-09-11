@@ -1,4 +1,4 @@
-package com.github.pwalan.websocket;
+package com.github.pwalan;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .formLogin()
                 .loginPage("/login") //2登陆页面
-                .defaultSuccessUrl("/chat") //3登陆成功转向该页面
+                .defaultSuccessUrl("/") //3登陆成功转向该页面
                 .permitAll()
                 .and()
                 .logout()

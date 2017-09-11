@@ -1,4 +1,3 @@
-com\github\pwalan\websocket\WebSecurityConfig.class
 com\github\pwalan\mysql\dao\PersonRepository.class
 com\github\pwalan\mysql\support\CustomRepositoryFactoryBean$CustomRepositoryFactory.class
 com\github\pwalan\config\LearnerSettings.class
@@ -9,6 +8,7 @@ com\github\pwalan\Person.class
 com\github\pwalan\mysql\web\DataController.class
 com\github\pwalan\mysql\support\CustomRepository.class
 com\github\pwalan\mysql\support\CustomRepositoryFactoryBean.class
+com\github\pwalan\WebSecurityConfig.class
 com\github\pwalan\mysql\support\CustomRepositoryImpl.class
 com\github\pwalan\websocket\WiselyMessage.class
 com\github\pwalan\WebMvcConfig.class
