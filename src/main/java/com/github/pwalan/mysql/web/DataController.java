@@ -131,6 +131,7 @@ public class DataController {
 
     /**
      * 测试回滚
+     *
      * @param person
      * @return
      */
@@ -142,6 +143,7 @@ public class DataController {
 
     /**
      * 测试不回滚
+     *
      * @param person
      * @return
      */
@@ -149,6 +151,41 @@ public class DataController {
     public Person noRollback(Person person) {
 
         return demoService.savePersonWithoutRollBack(person);
+
+    }
+
+    /**
+     * 存储一个用户并将其放入缓存中
+     * @param person
+     * @return
+     */
+    @RequestMapping("/put")
+    public Person put(Person person) {
+        return demoService.save(person);
+
+    }
+
+
+    /**
+     * 从缓存中查找
+     * @param person
+     * @return
+     */
+    @RequestMapping("/able")
+    public Person cacheable(Person person) {
+        return demoService.findOne(person);
+
+    }
+
+    /**
+     * 从缓存中删除
+     * @param id
+     * @return
+     */
+    @RequestMapping("/evit")
+    public String evit(int id) {
+        demoService.remove(id);
+        return "ok";
 
     }
 
