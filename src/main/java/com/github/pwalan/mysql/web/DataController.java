@@ -16,6 +16,7 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/mysql")
 public class DataController {
     //Spring Data JPA已自动为你注册bean，所以可自动注入
     @Autowired
